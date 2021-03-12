@@ -4,6 +4,7 @@ Grocarylist=[]
 productlist=[]
 pricelist=[]
 quantitylist=[]
+dupquant=[]
 budget=int(input("Enter your BUDJET : "))
 print("1.Add item\n2.Exit")
 choice=int(input("Enter your choice : "))
@@ -51,6 +52,7 @@ for data in quantitylist:
         else:
             break
     newlist.append(float(data[:count]))
+dupquant=quantitylist
 quantitylist=newlist
 for i in range(0,len(productlist)):
     for j in range(i+1,len(productlist)):
@@ -61,7 +63,7 @@ for i in range(0,len(productlist)):
             productlist.pop(i)
             pricelist.pop(i)
             
-priceandquantity=list(zip(quantitylist,pricelist))
+priceandquantity=list(zip(dupquant,pricelist))
 Grocerylist=list(zip(productlist,priceandquantity))
 bylet=defaultdict(list)
 for data in Grocerylist:
