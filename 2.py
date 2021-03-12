@@ -40,7 +40,7 @@ if(budget>0):
             break
         else:
              i=random.randint(0,len(productlist)-1)
-if(flag=1):               
+if(flag==1):               
     print("You have low money to again buy your cart products")
 newlist=[]
 for data in quantitylist:
