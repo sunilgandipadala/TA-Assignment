@@ -33,7 +33,7 @@ num=0
 flag=1
 if(budget>0):
     i=random.randint(0,len(productlist)-1)
-    while(len(pricelist)>num):
+    while(10>num):
         num+=1
         if(pricelist[i]<budget):
             print("Amount left with you is: {0}, you can buy {1}".format(budget,productlist[i]))
