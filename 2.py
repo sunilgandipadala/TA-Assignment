@@ -1,0 +1,67 @@
+import random
+from collections import defaultdict
+Grocarylist=[]
+productlist=[]
+pricelist=[]
+quantitylist=[]
+budget=int(input("Enter your BUDJET : "))
+print("1.Add item\n2.Exit")
+choice=int(input("Enter your choice : "))
+while(choice!=2):
+    print("\n\n")
+    product=input("Enter product : ")
+    quantity=input("Enter quantity :")
+    price=int(input("Enter price : "))
+    if price>budget:
+        print("You don't have sufficient budget decrease your quantity")
+    else:
+        budget=budget-price
+        productlist.append(product)
+        pricelist.append(price)
+        quantitylist.append(quantity)
+    print("\n\nAmount left : ",budget,"\n\n")
+    if(budget==0):
+        print("Your budget is nill ,you can't buy any more........")
+        break
+    print("1.Add item\n2.Exit")
+    choice=int(input("Enter your choice : "))
+if(budget>0):
+    i=random.randint(0,len(productlist)-1)
+    while(True):
+        if(pricelist[i]<budget):
+            print("Amount left with you is: {0}, you can buy {1}".format(budget,productlist[i]))
+            break
+        else:
+             i=random.randint(0,len(productlist)-1)
+newlist=[]
+for data in quantitylist:
+    count=0
+    for da in data:
+        if(da.isdigit()or da=="."):
+            count+=1
+        else:
+            break
+    newlist.append(float(data[:count]))
+quantitylist=newlist
+for i in range(0,len(productlist)):
+    for j in range(i+1,len(productlist)):
+        if(productlist[i]==productlist[j]):
+            quantitylist[j]=quantitylist[i]+quantitylist[j]
+            pricelist[j]=pricelist[i]+pricelist[j]
+            quantitylist.pop(i)
+            productlist.pop(i)
+            pricelist.pop(i)
+            
+priceandquantity=list(zip(quantitylist,pricelist))
+Grocerylist=list(zip(productlist,priceandquantity))
+bylet=defaultdict(list)
+for data in Grocerylist:
+    bylet[data[0]].append(data[1])
+bylet=dict(bylet)
+print("Grocery List is: ")
+print ("{:<15} {:<10} {:<8}".format('Product name','Quantity','Price'))
+for k, v in bylet.items():
+    qunat=v
+    print ("{:<15} {:<10} {:<8}".format(k,qunat[0][0],qunat[0][1]))
+
+    
