@@ -9,20 +9,23 @@ print("1.Add item\n2.Exit")
 choice=int(input("Enter your choice : "))
 while(choice!=2):
     print("\n\n")
-    product=input("Enter product : ")
-    quantity=input("Enter quantity :")
-    price=int(input("Enter price : "))
-    if price>budget:
-        print("You don't have sufficient budget decrease your quantity")
+    if(choice<3 and choice>0):
+        product=input("Enter product : ")
+        quantity=input("Enter quantity :")
+        price=int(input("Enter price : "))
+        if price>budget:
+            print("You don't have sufficient budget decrease your quantity")
+        else:
+            budget=budget-price
+            productlist.append(product)
+            pricelist.append(price)
+            quantitylist.append(quantity)
+        print("\n\nAmount left : ",budget,"\n\n")
+        if(budget==0):
+            print("Your budget is nill ,you can't buy any more........")
+            break
     else:
-        budget=budget-price
-        productlist.append(product)
-        pricelist.append(price)
-        quantitylist.append(quantity)
-    print("\n\nAmount left : ",budget,"\n\n")
-    if(budget==0):
-        print("Your budget is nill ,you can't buy any more........")
-        break
+        print("Enter valid choid\n\n")
     print("1.Add item\n2.Exit")
     choice=int(input("Enter your choice : "))
 if(budget>0):
