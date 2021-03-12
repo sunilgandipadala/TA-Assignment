@@ -1,7 +1,10 @@
 n=int(input("Enter the no of rows: "))
 for i in range(n,0,-1):
     for j in range(0,i):
-        print(" ",end=" ")
+        if(j==0):
+            continue
+        else:
+            print(" ",end=" ")
     for i in range(0,n-j):
         print("*",end=" ")
     print()
