@@ -28,14 +28,20 @@ while(choice!=2):
         print("Enter valid choid\n\n")
     print("1.Add item\n2.Exit")
     choice=int(input("Enter your choice : "))
+num=0    
+flag=1
 if(budget>0):
     i=random.randint(0,len(productlist)-1)
-    while(True):
+    while(len(pricelist)>num):
+        num+=1
         if(pricelist[i]<budget):
             print("Amount left with you is: {0}, you can buy {1}".format(budget,productlist[i]))
+            flag=0
             break
         else:
              i=random.randint(0,len(productlist)-1)
+if(flag=1):               
+    print("You have low money to again buy your cart products")
 newlist=[]
 for data in quantitylist:
     count=0
